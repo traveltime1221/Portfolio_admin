@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build && cp dist/index.html dist/404.html",
-    "deploy": "gh-pages -d dist -r https://github.com/traveltime1221/Portfolio.git -b gh-pages",
+    "deploy": "gh-pages -d dist -r https://github.com/traveltime1221/Portfolio_admin.git -b gh-pages",
     "build_prod": "vite build --mode production --outDir dist_prod",
     "build_dev": "vite build --mode development --outDir dist_dev",
     "preview_prod": "vite preview --outDir dist_prod",
