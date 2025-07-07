@@ -1,0 +1,1 @@
+import{_ as e}from"./index-B1WTt4w7.js";const r={};function o(n,c){return" 程式碼紀錄 套件名稱 功能 monaco-editor VS Code 編輯器核心 codemirror 輕量編輯器 vite-plugin-live-editor 快速建立 live preview 編輯器 vite-plugin-playground Vue 官方 playground 模板 sandpack "}const t=e(r,[["render",o]]);export{t as default};
