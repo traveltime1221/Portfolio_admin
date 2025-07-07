@@ -14,7 +14,6 @@ npm install
 ### 環境設定
 參考 [vite 官方 環境設定](https://vite.dev/config/).
 
-
 ### 啟動開發環境
 
 ```sh
@@ -32,5 +31,4 @@ npm run build
 ```sh
 npm run lint
 ```
-
 
