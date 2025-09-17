@@ -151,6 +151,6 @@ declare global {
   export type { TabItem } from './types/Common.d'
   import('./types/Common.d')
   // @ts-ignore
-  export type { ReservoirInfo, Reservoir, Region, RealTimeReservoirData, TyphoonItem, TyphoonInfo, TyphoonEarthquakeData } from './types/Government.d'
+  export type { ReservoirInfo, Reservoir, Region, RealTimeReservoirData, TyphoonItem, TyphoonInfo, TyphoonEarthquakeData, EarthquakeTWItem, EarthquakeWorldItem } from './types/Government.d'
   import('./types/Government.d')
 }

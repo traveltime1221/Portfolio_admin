@@ -31,7 +31,6 @@ const clickHandlerPos = (item: any) => {
 
 // 定位點跑掉了 需要修正
 const getMapInfo = () => {
-
     import('leaflet').then(L => {
 
         // 初始化地圖
@@ -47,7 +46,7 @@ const getMapInfo = () => {
         // 收集所有標記的位置, 並初始化對象為空值
         const bounds = L.latLngBounds([]);
 
-        useGovernmentStore.全球地震.data.forEach((item: any) => {
+        useGovernmentStore.全球地震?.forEach((item: any) => {
             // 解析經緯度
             let latitude = parseFloat(item.緯度.replace(/[^\d.-]/g, ''));
             let longitude = parseFloat(item.經度.replace(/[^\d.-]/g, ''));
@@ -65,15 +64,15 @@ const getMapInfo = () => {
 
             // 定位點位置
             const popup = `
-        <div>
-            <strong>地震時間:</strong> ${item.地震時間}<br>
-            <strong>地震位置:</strong> ${item.地震位置}<br>
-            <strong>深度(公里):</strong> ${item.深度_公里}<br>
-            <strong>經度:</strong> ${item.經度}<br>
-            <strong>緯度:</strong> ${item.緯度}<br>
-            <strong>規模:</strong> ${item.規模}<br>
-        </div>
-    `;
+                <div>
+                    <strong>地震時間:</strong> ${item.地震時間}<br>
+                    <strong>地震位置:</strong> ${item.地震位置}<br>
+                    <strong>深度(公里):</strong> ${item.深度_公里}<br>
+                    <strong>經度:</strong> ${item.經度}<br>
+                    <strong>緯度:</strong> ${item.緯度}<br>
+                    <strong>規模:</strong> ${item.規模}<br>
+                </div>
+            `;
 
             // 添加標記到地圖
             const customIcon = L.divIcon({
@@ -237,7 +236,7 @@ onMounted(async () => {
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr v-for="item in useGovernmentStore.全球地震.data"
+                                <tr v-for="item in useGovernmentStore.全球地震"
                                     class="border-t border-gray-100 dark:border-gray-800">
                                     <td class="text-left py-3.5 sm:px-4">
                                         <span class="block font-medium text-gray-800 text-theme-sm dark:text-white/90">

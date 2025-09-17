@@ -28,9 +28,9 @@ onMounted(async () => {
             <Loading/>
             <div class="mx-auto">
                 <div class="w-full mb-2">
-                    <div class="bg-danger text-black dark:text-white px-2.5 py-1.5 mb-2.5" v-if="isTaichung(useGovernmentStore.颱風天放假公布資訊.資訊)"> 
+                    <div class="bg-danger text-black dark:text-white px-2.5 py-1.5 mb-2.5" v-if="isTaichung(useGovernmentStore.颱風天放假公布資訊?.詳細資訊 ?? [])"> 
                         台中市：
-                        {{ useGovernmentStore.颱風天放假公布資訊.資訊.find(a => a.地區 === '臺中市')?.資訊?.toString() ?? '' }}
+                        {{ useGovernmentStore.颱風天放假公布資訊!.詳細資訊.find(a => a.地區 === '臺中市')?.資訊?.toString() ?? '' }}
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-3">
@@ -39,7 +39,7 @@ onMounted(async () => {
                         <iframe class="typhoon-news" src="https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_WARN.html" frameborder="0"></iframe>
                     </div>
 
-                    <div class="bg-danger" v-if="useGovernmentStore.颱風天放假公布資訊.資訊.length == 0">
+                    <div class="bg-danger" v-if="useGovernmentStore.颱風天放假公布資訊 && useGovernmentStore.颱風天放假公布資訊.詳細資訊.length == 0">
                         {{useGovernmentStore.颱風天放假公布資訊.颱風名稱}}
                     </div>
                     <div class="col-span-12 lg:col-span-5" v-else>
@@ -59,7 +59,7 @@ onMounted(async () => {
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr v-for="(item, index) in useGovernmentStore.颱風天放假公布資訊.資訊" :key="index" 
+                                <tr v-for="(item, index) in useGovernmentStore.颱風天放假公布資訊?.詳細資訊 || []" :key="index" 
                                     class="border-t border-gray-100 dark:border-gray-800">
                                     <td class="px-5 py-4 sm:px-6 text-gray-500 dark:text-gray-400">
                                         {{item.地區}}

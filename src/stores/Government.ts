@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { api } from '@/assets/ts/app-api.ts'
 import 台灣水庫分類 from '@/assets/ts/台灣水庫列表.ts'
 import { useUIStore } from '@/stores/UIStore.ts'
-import type { TyphoonItem } from '@/types/Government'
+import type { TyphoonItem, EarthquakeTWItem, EarthquakeWorldItem } from '@/types/Government'
 
 // twse
 // https://openapi.twse.com.tw/#/
@@ -42,57 +42,22 @@ export const useGovernmentData = defineStore('Government', () => {
         ]
     })
 
-    // type TyphoonItem = {
-    //     颱風名稱: string;
-    //     更新時間: string;
-    //     資訊: TyphoonInfo[];
-    // }
-
-    // type TyphoonInfo = {
-    //     地區: string;
-    //     資訊: string[];
-    // }
-
     // 預設空值
-    const 颱風天放假公布資訊 = ref<TyphoonItem>({
-        颱風名稱: '',
-        更新時間: '',
-        資訊: []
-    })
+    const 颱風天放假公布資訊 = ref<TyphoonItem>()
 
-    const 全球地震 = ref({
-        data: [
-            {
-                地震時間: '',
-                地震位置: '',
-                '深度_公里': '',
-                經度: '',
-                緯度: '',
-                規模: ''
-            }
-        ]
-    })
+    const 全球地震 = ref<EarthquakeWorldItem[]>()
 
-    type TWEarthquakeInfo = {
-        id: string;
-        地震時間: string;
-        震央位置: string;
-        地震深度: string;
-        規模: string;
-        相對位置: string;
-        圖片: string;
-        active: boolean;
-    }
-
-    const 台灣地震 = ref<TWEarthquakeInfo[]>()
+    const 台灣地震 = ref<EarthquakeTWItem[]>()
 
     // action
+    // 全球地震資訊
     const getEarthQuackWorldInfo = async () => {
         try {
             ui.showLoading(true)
             const res = await api.Government.全球地震資訊()
             if (res.status === 'success') {
-                全球地震.value.data = res.content
+                console.log(res.content)
+                全球地震.value = res.content.data
             } else {
                 console.log('取得全球地震資訊異常')
             }
@@ -108,8 +73,8 @@ export const useGovernmentData = defineStore('Government', () => {
             ui.showLoading(true)
             const res = await api.Government.台灣地震資訊()
             if (res.status === 'success') {
-                res.content.forEach((a:TWEarthquakeInfo) => a.active = false)
-                台灣地震.value = res.content
+                res.content.data.forEach((a:EarthquakeTWItem) => a.active = false)
+                台灣地震.value = res.content.data
             } else {
                 console.log('台灣地震資訊撈取異常')
             }
@@ -165,9 +130,8 @@ export const useGovernmentData = defineStore('Government', () => {
         try {
             ui.showLoading(true)
             const res = await api.Government.颱風天放假公布()
-            console.log(res)
             if (res.status === 'success') {
-                颱風天放假公布資訊.value = res.content
+                颱風天放假公布資訊.value = res.content.data
             } else {
                 console.log('颱風天放假公布撈取異常')
             }

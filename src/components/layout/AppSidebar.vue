@@ -246,11 +246,17 @@ const menuGroups = [
         icon: GridIcon,
         name: "個人數據管理平台",
         subItems: [
-          { name: "股票列表", path: "/Person/CalculateStockInterest", pro: false },
           { name: "作品集管理(上架＋預覽)", path: "/Person/PortfolioManagement", pro: false },
           { name: "作品集統計圖", path: "/Person/StatisticalChart", pro: false }
           // { name: "股息計算", path: "/Stock/CalculateStockInterest", pro: false },
         ],
+      },
+      {
+        icon: GridIcon,
+        name: "財經相關",
+        subItems: [
+        { name: "股票列表", path: "/Person/CalculateStockInterest", pro: false },
+        ]
       },
       {
         icon: CalenderIcon,
@@ -269,6 +275,11 @@ const menuGroups = [
         icon: CalenderIcon,
         name: "Calendar",
         path: "/calendar",
+      },
+      {
+        icon: CalenderIcon,
+        name: "OtherLogin",
+        path: "/OtherLogin",
       },
       // {
       //   icon: UserCircleIcon,

@@ -33,7 +33,7 @@ export interface RealTimeReservoirData {
 export type TyphoonItem = {
     颱風名稱: string;
     更新時間: string;
-    資訊: TyphoonInfo[];
+    詳細資訊: TyphoonInfo[];
 }
 
 export type TyphoonInfo = {
@@ -47,3 +47,24 @@ export interface TyphoonEarthquakeData {
     typhoonData: TyphoonDataItem | any;
 }
 
+// 台灣地震資訊
+export type EarthquakeTWItem = {
+    id: string;
+    地震時間: string;
+    震央位置: string;
+    地震深度: string;
+    規模: string;
+    相對位置: string;
+    圖片: string;
+    active: boolean;
+}
+
+// 全球地震資訊
+export type EarthquakeWorldItem = {
+    地震時間: string;
+    地震位置: string;
+    深度_公里: string;
+    經度: string;
+    緯度: string;
+    規模: string;
+}

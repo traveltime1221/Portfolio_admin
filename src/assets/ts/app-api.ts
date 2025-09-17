@@ -47,9 +47,9 @@ const callPostAPI = (path: string, param: any) => {
 export const api = {
     Government: {
         台灣水庫即時水情: () => getTwseAPI(`/waters/latest`),
-        全球地震資訊: () => callGetAPI(`/api/crawler/earthquake_info`),
-        颱風天放假公布: () => callGetAPI(`/api/crawler/typhoon_info`),
-        台灣地震資訊: () => callGetAPI(`/api/crawler/earthquake_tw_info`),
+        颱風天放假公布: () => callGetAPI(`/api/crawler/spider_typhoon_info`),
+        台灣地震資訊: () => callGetAPI(`/api/crawler/spider_earthquake_info_tw`),
+        全球地震資訊: () => callGetAPI(`/api/crawler/spider_earthquake_world`),
         GetWeatherWeekly: (location: string[]) => callGetAPI(`/api/Weather/Weekly?city=${location}`)
     },
     Person: {

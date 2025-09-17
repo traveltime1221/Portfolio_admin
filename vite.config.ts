@@ -15,7 +15,8 @@ import Pages from 'vite-plugin-pages'
 // https://vite.dev/config/
 export default defineConfig(({mode}) => {
   return {
-    base: '/Portfolio_admin/', // base: '/Portfolio/backend/',
+    base: mode === 'production' ? '/Portfolio_admin/' : '/',
+    //base: '/Portfolio_admin/', // base: '/Portfolio/backend/',
     server: {
       host: true
     },
